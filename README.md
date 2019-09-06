@@ -1,68 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This front-end was attempted to complete the black diamond challenge on the DevMountain node-3-afternoon project.
 
-## Available Scripts
+The goal was to build a front-end react app that connects and communicates to the node REST api built in the afternoon project.
 
-In the project directory, you can run:
+I started out by building the structure of the application, importing axios, react-router-dom, and using create-react-app to bootstrap the application. After building a few components and successfully routing them as different pages, I ran into an issue getting response.data from the api. Turns out that this was a cors issue with the proxy. The proxy had the correct port, but I kept getting a 400 error from my .catch. After countless attmepts to fix the issue, (including changing ports on both the node server and the proxy), I was no closer to fixing the issue. This is where my mentor Eric came to the rescue. 
 
-### `npm start`
+## Issue
+The issue ended up being a proxy cors issue. The issue stemed from using two different files (one for the react application, and one for the node server) which were not included in the same parent file. Because of this, the server and the axios requests were not going through. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Resolution
+Eric fixed the issue by installing express, and creating a 'back-end' for the front-end application. He then used an axios request to retrieve data from the original node api server. 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## What I Learned
+When creating a full-stack react application, always start with create-react-app. Don't create an entire back-end and then decide to add a front-end. (This scenario was caused by trying to add a front-end to a full back-end exercise).
